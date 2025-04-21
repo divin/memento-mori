@@ -29,4 +29,6 @@ If you find this little app or its source code helpful, maybe consider **support
 ## Credits 🙏
 
 - **[LuaCATS](https://github.com/notpeter/playdate-luacats)**: Types for the Playdate SDK API.
-- **WHO Data**: The **World Health Organization** provides the **life expectancy data** used in this app. I did some minor data cleaning and put the data into a **Lua table**. You can find the data in the `data` folder.
+- **WHO Data**: The **life expectancy data** comes courtesy of the **World Health Organization**. I did some minor tidying and put it into a **Lua table** (check the `data` folder!). Unfortunately, I can't seem to find the original source link anymore, sorry about that!
+- **UI Sounds**: The lovely **UI sounds** are from [Pixabay](https://pixabay.com). I did some minor editing to make them fit just right. You can find the sounds in the `source/assets/sounds` folder. Apologies, but I downloaded several sounds before picking the final ones, so I don't have the specific links handy anymore.
+- **[ADPCM](https://devforum.play.date/t/adpcm-encoder-tool-mac-only/1283)**: Used the ADPCM encoder tool from [Matt Sephton](https://blog.gingerbeardman.com/about). Thanks, _matt_! 🙏
