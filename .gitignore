@@ -1,6 +1,4 @@
 .DS_Store
-*.pdx
-*.aseprite
 .ropeproject
 .venv
 .ipynb_checkpoints
