@@ -2,7 +2,7 @@
 
 # Define paths based on environment variables
 SOURCE_DIR=$(ZED_WORKTREE_ROOT)/source
-BUILD_DIR=$(ZED_WORKTREE_ROOT)/publish/build.pdx
+BUILD_DIR=$(ZED_WORKTREE_ROOT)/build.pdx
 CONFIG_FILE=~/.Playdate/config
 
 # Default target

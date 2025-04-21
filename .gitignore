@@ -2,3 +2,4 @@
 .ropeproject
 .venv
 .ipynb_checkpoints
+*.pdx
