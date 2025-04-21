@@ -238,7 +238,7 @@ function Birthday:update()
             local gender = (self.gender == "Diverse") and "Male" or self.gender
             SETTINGS = {
                 country = self.country,
-                gender = self.gender,
+                gender = gender,
                 month = self.month,
                 day = self.day,
                 year = self.year

@@ -1,0 +1,63 @@
+name: 🛠️🚀 Build & Release
+
+on:
+  push:
+    tags:
+      - "*"
+
+env:
+  PROJECT_NAME: memento-mori
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: 👀 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🏷️ Extract version from tag
+        id: get_version
+        run: |
+          # Extracts the tag name from the Git reference (e.g., refs/tags/v1.2.3 -> v1.2.3)
+          TAG_NAME=${{ github.ref_name }}
+          # Removes 'v' prefix if present (e.g., v1.2.3 -> 1.2.3)
+          VERSION=${TAG_NAME#v}
+          echo "Tag pushed: $TAG_NAME"
+          echo "Extracted version: $VERSION"
+          # Set VERSION as an environment variable for subsequent steps in this job
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+
+      - name: 🛠️ Install Playdate SDK
+        uses: idleberg/setup-playdate-sdk@v3.0.0
+        with:
+          sdk_version: "2.6.2"
+
+      - name: 🤵‍♂️ Set up Butler
+        uses: jdno/setup-butler@v1.6.0
+
+      - name: 🚀 Build
+        run: |
+          pdc -k source/ ${{ env.PROJECT_NAME }}.pdx
+          zip -r -9 ${{ env.PROJECT_NAME }}.zip ${{ env.PROJECT_NAME }}.pdx
+
+      - name: 📦 Create or Update GitHub Release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ github.ref_name }}
+          release_name: Release ${{ env.VERSION }}
+          file: ${{ env.PROJECT_NAME }}.zip
+          asset_name: ${{ env.PROJECT_NAME }}-${{ env.VERSION }}.zip
+          overwrite: true
+          body: |
+            Version ${{ env.VERSION }} of ${{ env.PROJECT_NAME }} for the Playdate.
+
+      - name: 📦 Release to itch.io
+        env:
+          BUTLER_API_KEY: ${{ secrets.ITCHIO_API_KEY }}
+        run: |
+          butler push ${{ env.PROJECT_NAME }}.zip divingavran/${{ env.PROJECT_NAME }}:playdate --userversion ${{ env.VERSION }}
