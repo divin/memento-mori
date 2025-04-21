@@ -25,3 +25,7 @@ This project is just a simple **Playdate app** built using the **official Playda
 ## Support 💖
 
 If you find this little app or its source code helpful, maybe consider **supporting my work**? 😊 You can find me on **[Ko-fi](https://ko-fi.com/divin)** or leave a **small donation via [itch.io](https://divingavran.itch.io/memento-mori)**. **Any support truly helps** me keep tinkering and hopefully improving things! Thank you! 🙏
+
+## Credits 🙏
+
+- **[LuaCATS](https://github.com/notpeter/playdate-luacats)**: Types for the Playdate SDK API.
