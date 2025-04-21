@@ -29,3 +29,4 @@ If you find this little app or its source code helpful, maybe consider **support
 ## Credits 🙏
 
 - **[LuaCATS](https://github.com/notpeter/playdate-luacats)**: Types for the Playdate SDK API.
+- **WHO Data**: The **World Health Organization** provides the **life expectancy data** used in this app. I did some minor data cleaning and put the data into a **Lua table**. You can find the data in the `data` folder.
