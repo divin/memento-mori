@@ -2,6 +2,10 @@
 
 After turning 30, I decided to make a little app that helps me take a moment to reflect on the preciousness of time. So, let me introduce you to **memento mori**, a little **Playdate app** that helps you **visualize your estimated life expectancy and the time you have left**. The name "memento mori" is a Latin phrase that translates to **"remember that you die"**.
 
+<p align="center">
+  <img src="/assets/showcase.mov" />
+</p>
+
 ## Description of App 📱
 
 This little app offers a gentle perspective on your estimated lifespan, using **statistical data**. After a **quick initial setup**, it displays:
