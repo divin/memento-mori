@@ -13,6 +13,10 @@ class("Overview").extends(gfx.sprite)
 function Overview:init(birthday, lifeExpectancy)
     Overview.super.init(self)
 
+    -- Keep track of time
+    self.lastTime = pd.getTime()
+
+    -- Gridview
     local padding = 8
     self.gridview = ui.gridview.new(pd.display.getWidth(), pd.display.getHeight())
     self.gridview.scrollCellsToCenter = false
@@ -119,6 +123,7 @@ end
 --- Updates the overview
 --- @return nil
 function Overview:update()
+    -- Input handling
     if pd.buttonJustReleased(pd.kButtonRight) then
         SELECT:playAt(0, 0.5)
         self.gridview:selectNextColumn(true, true, true)
@@ -127,8 +132,13 @@ function Overview:update()
         self.gridview:selectPreviousColumn(true, true, true)
     end
 
+    -- Update time if needed
+    local currentTime = pd.getTime()
+    local needsUpdate = (currentTime.hour ~= self.lastTime.hour or currentTime.minute ~= self.lastTime.minute)
+    self.lastTime = currentTime
+
     -- Only redraw if the gridview needs to be updated
-    if self.gridview.needsDisplay then
+    if self.gridview.needsDisplay or needsUpdate then
         local width, height = pd.display.getWidth(), pd.display.getHeight()
 
         -- Create a new image of appropriate size
